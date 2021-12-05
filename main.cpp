@@ -8,15 +8,32 @@ int main()
 	while (moves < 2)
 	{
 		system("cls");
-		std::cout << "set of possible moves size: ";
+		std::cout << "size of set of possible moves (int): ";
 		std::cin >> moves;
 	}
 	us length = 0;
 	while (length < 1)
 	{
 		system("cls");
-		std::cout << "length of substrings: ";
+		std::cout << "length of substrings (int): ";
 		std::cin >> length;
+	}
+	std::string trackcalls;
+	while (true)
+	{
+		system("cls");
+		std::cout << "would you like to track number of recursive function calls? (y/n) ";
+		std::cin >> trackcalls;
+		if (trackcalls == (std::string) "y")
+		{
+			showcalls = true;
+			break;
+		}
+		else if (trackcalls == (std::string) "n")
+		{
+			showcalls = false;
+			break;
+		}
 	}
 	gamestate gs0(moves, length);
 	std::string userstartstr;
@@ -43,15 +60,17 @@ int main()
 	system("cls");
 	while (gamerunning)
 	{
-		std::cout << gs0.getstring() << std::endl;
-		std::cout << join(gs0.alllegal()) << std::endl;
+		std::cout << "current string: " << gs0.getstring() << std::endl;
+		std::cout << "available moves: " << join(gs0.alllegal()) << std::endl;
+		std::cout << "your move: ";
 		std::cin >> move;
 		while (!gs0.legal(move))
 		{
 			system("cls");
-			std::cout << "Illegal move" << std::endl;
+			std::cout << "illegal move" << std::endl;
 			std::cout << gs0.getstring() << std::endl;
 			std::cout << join(gs0.alllegal()) << std::endl;
+			std::cout << "your move: ";
 			std::cin >> move;
 		}
 		gs0.advance(move);
