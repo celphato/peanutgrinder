@@ -39,6 +39,8 @@ Why there aren't any options for P2:
 `000120021001` is illegal since 0**001**20021**001**,  
 `000120021002` is illegal since 00012**002**1**002**.
 
+Side note: I like `{0, 1, 2}` and `l = 4` a lot and it just so happens to be one of the settings that leaves this AI completely stumped, so I guess on the bright side I can still have my fun and I recommend trying this out with a friend (may take around 5 minutes though).
+
 ## Program behaviour
 
 The program has a built-in brute-force AI which will guarantee its win where possible, but can't yet delay or evade a loss where guaranteeing a win isn't possible. If it's not possible, it'll print a little "`:(`" as an indication that you still have a chance to win. The program also has a built-in assistant that shows you your options and a mechanism that prevents you from making illegal moves.
