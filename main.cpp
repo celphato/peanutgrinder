@@ -2,26 +2,35 @@
 #include "gamestate.hpp"
 #include "bruteforce.hpp"
 
+void clear() // ceilingfans
+{
+#ifndef _WIN32
+system("clear");
+#else
+system("cls");
+#endif /* _WIN32 */
+}
+
 int main()
 {
 	us moves = 0;
 	while (moves < 2)
 	{
-		system("cls");
+		clear();
 		std::cout << "size of set of possible moves (int): ";
 		std::cin >> moves;
 	}
 	us length = 0;
 	while (length < 1)
 	{
-		system("cls");
+		clear();
 		std::cout << "length of substrings (int): ";
 		std::cin >> length;
 	}
 	std::string trackcalls;
 	while (true)
 	{
-		system("cls");
+		clear();
 		std::cout << "would you like to track number of recursive function calls? (y/n) ";
 		std::cin >> trackcalls;
 		if (trackcalls == (std::string) "y")
@@ -40,7 +49,7 @@ int main()
 	us userno;
 	while (true)
 	{
-		system("cls");
+		clear();
 		std::cout << "would you like to start first? (y/n) ";
 		std::cin >> userstartstr;
 		if (userstartstr == (std::string) "y")
@@ -57,7 +66,7 @@ int main()
 	}
 	bool gamerunning = true;
 	us move = gs0.maxmove;
-	system("cls");
+	clear();
 	while (gamerunning)
 	{
 		std::cout << "current string: " << gs0.getstring() << std::endl;
@@ -66,7 +75,7 @@ int main()
 		std::cin >> move;
 		while (!gs0.legal(move))
 		{
-			system("cls");
+			clear();
 			std::cout << "illegal move" << std::endl;
 			std::cout << gs0.getstring() << std::endl;
 			std::cout << join(gs0.alllegal()) << std::endl;
@@ -74,7 +83,7 @@ int main()
 			std::cin >> move;
 		}
 		gs0.advance(move);
-		system("cls");
+		clear();
 		if (gs0.alllegal().size()!=0)
 		{
 			move = bruteforce(gs0);
@@ -82,7 +91,7 @@ int main()
 		}
 		gamerunning = gs0.alllegal().size()!=0;
 	}
-	system("cls");
+	clear();
 	std::cout << gs0.getstring() << std::endl;
 	std::cout << "player " << 3-gs0.getplayer() << ((userno==gs0.getplayer())?" (computer)":" (human)") << " wins" << std::endl;
 }
